@@ -1,0 +1,60 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "2282dabdd988a5a94299e6da094872a4c5ebe4e4c80572a21240a9c2f3f0aba8"
+    }
+  ],
+  "containerPath" : "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/Z0Memo.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator15.0",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/DerivedData2/Z0Memo/Index/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/DerivedData2/Z0Memo/Index/Build/Products",
+      "derivedDataPath" : "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/DerivedData2",
+      "indexDataStoreFolderPath" : "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/DerivedData2/Z0Memo/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/DerivedData2/Z0Memo/Index/PrecompiledHeaders",
+      "pchPath" : "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/DerivedData2/Z0Memo/Index/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "INDEX_ARENA_INFO_REGULAR_BUILD_PRODUCTS_DIR" : "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/DerivedData2/Z0Memo/Build/Products",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

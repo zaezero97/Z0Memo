@@ -1,0 +1,10 @@
+version: "Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)"
+options: "7c210285ad91bfaec743ad1cdc75c0a36a39d4994ee93a2203d801d0d6081829"
+build_start_time: [1633965941, 174437999]
+build_end_time: [1633965945, 896898984]
+inputs:
+  "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/MemoListTableViewController.swift": [1633965324, 318007230]
+  "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/Z0Memo/AppDelegate.swift": [1633962573, 708560228]
+  "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/Z0Memo/Model/Memo.swift": [1633965571, 456763267]
+  "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/Z0Memo/SceneDelegate.swift": [1633962573, 710027933]
+  "/Users/jaeyeongsin/Documents/GitHub/Z0Memo/Z0Memo/ViewController.swift": [1633962573, 710750102]
