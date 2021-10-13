@@ -9,7 +9,7 @@ import UIKit
 
 class ComposeViewController: UIViewController {
 
-    
+    var editMemo : Memo?
     @IBOutlet weak var memoTextView: UITextView!
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil) //dismiss -> view controller가 modal로 present한 view controller를 닫는다.
@@ -23,10 +23,18 @@ class ComposeViewController: UIViewController {
         //let newMemo = Memo(content: memo) //새로운 Memo(model) 객체를 만들고
         //Memo.dummyMemoList.append(newMemo) //Tableview에 각 cell로 표현되는 MemoList에 추가하고 dismiss한다.
         
-        DataManager.shared.addNewMemo(memo)
+        if let target = editMemo{
+            target.content = memo //segue를 통해 값이 전달 되었을때 reference 가 넘어온거라 생각하고 따라서 이렇게 값만 변경해주고 savaContext하면 값이 저장되는 것 같다.
+            DataManager.shared.saveContext()
+            NotificationCenter.default.post(name: ComposeViewController.MemoDidEdit, object: nil)
+        }else{
+            DataManager.shared.addNewMemo(memo)
+            NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)// 등록된 observer 객체들에게 동시에! Notification을 전달하는 클래스이다.
+            //Notification 을 전달한 obverser 를 처리할 때까지 대기 (동기적)
+        }//editMemo의 nil인지 아닌지를 따져서 수정인지 새로운 메모 작성인지를 판단하여 서로 다른 메시지를 post한다.
         
-        NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)// 등록된 observer 객체들에게 동시에! Notification을 전달하는 클래스이다.
-        //Notification 을 전달한 obverser 를 처리할 때까지 대기 (동기적)
+        
+      
     
         dismiss(animated:true, completion: nil)
     }
@@ -34,8 +42,15 @@ class ComposeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Do any additional setup after loading the view.
+        if let memo = editMemo{
+            navigationItem.title = "메모 편집"
+            memoTextView.text = memo.content
+        }else{
+            navigationItem.title = "새 메모"
+            memoTextView.text = " "
+        }
+        // DetailViewController 에서 segue를 통해 화면전환이 이루어 졌을경우는 editMemo가 nil이 아니게 된다.
+        //따라서 nil이 아니면 네비게이션 아이템의 타이플을 바까주고 textview의 text를 세팅해준다.
     }
     
 
@@ -53,6 +68,7 @@ class ComposeViewController: UIViewController {
 
 
 extension ComposeViewController{
+    static let MemoDidEdit = Notification.Name(rawValue: "MemoDidEdit")
     static let newMemoDidInsert = Notification.Name(rawValue: "new MemoDidInsert")
 } // 라디오 방송은 주파수로 방송을 구분 하듯이 Notification은 이름으로 구분한다.
 //여기서 Notification.name 을 static으로 선언한 이유를 추측해보면

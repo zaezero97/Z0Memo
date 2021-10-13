@@ -9,6 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var detailTableView: UITableView!
     var memo: Memo?
     let formatter: DateFormatter = {
        let f = DateFormatter()
@@ -17,23 +18,26 @@ class DetailViewController: UIViewController {
         f.locale = Locale(identifier: "Ko_kr") // xcode가 기본적으로 생성한 프로젝트는 다국어를 지원하지 않아 영어로 표시된다. 따라서 한국 날짜로 표현하고 싶으면 이렇게 지정한다.
         return f
     }() // DateFormatter 객체를 클로저로 초기화
+    
+    
+    var token : NSObjectProtocol?
+
+    deinit{
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NotificationCenter.default.addObserver(forName: ComposeViewController.MemoDidEdit, object: nil, queue: OperationQueue.main) {
+            [weak self] Notification in
+            self?.detailTableView.reloadData()
+        }
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension DetailViewController : UITableViewDataSource{
@@ -57,5 +61,19 @@ extension DetailViewController : UITableViewDataSource{
         }
     }
     
-    
 }
+
+
+extension DetailViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination.children.first as? ComposeViewController
+        {
+            vc.editMemo = memo
+        } // toolbar 의 버튼을 클릭하면 ComposeViewController로 이동하는데 Navigation Controller로 이동하고 그 Navigation Controller가 ComposeViewController를 가르키고 있는 것이다.
+        //따라서 segue.destination은 Navigation Controller이고 자식의 첫번째가 ComposeViewController가 된다.
+        
+    }
+}
+
+
+

@@ -21,8 +21,8 @@ class DataManager
     
     var mainContext : NSManagedObjectContext{
         return persistentContainer.viewContext
-    }//NSManagedObjectContext -> transaction ,NSManagedObject(스키마) 를가져오고 생성하고 저장하는 역활
-   
+    }//NSManagedObjectContext -> NSManagedObject(스키마) 를가져오고 생성하고 저장하는 역활
+    
     var memoList = [Memo]() // fetch한 데이터들을 저장할 배열
     
     func fetchMemo(){
