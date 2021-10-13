@@ -16,6 +16,7 @@
 		AE1A6C18271481CE000AAC3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1A6C16271481CE000AAC3B /* LaunchScreen.storyboard */; };
 		AE1A6C2127148A34000AAC3B /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A6C2027148A34000AAC3B /* Memo.swift */; };
 		AE1A6C2327148C8C000AAC3B /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */; };
+		AE2A6EF227166AF600944473 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2A6EF127166AF600944473 /* ComposeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AE1A6C19271481CE000AAC3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE1A6C2027148A34000AAC3B /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
+		AE2A6EF127166AF600944473 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +48,6 @@
 		AE1A6BFC271481CD000AAC3B = {
 			isa = PBXGroup;
 			children = (
-				AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */,
 				AE1A6C07271481CD000AAC3B /* Z0Memo */,
 				AE1A6C06271481CD000AAC3B /* Products */,
 			);
@@ -63,6 +64,8 @@
 		AE1A6C07271481CD000AAC3B /* Z0Memo */ = {
 			isa = PBXGroup;
 			children = (
+				AE2A6EF127166AF600944473 /* ComposeViewController.swift */,
+				AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */,
 				AE1A6C1F27148A10000AAC3B /* Model */,
 				AE1A6C08271481CD000AAC3B /* AppDelegate.swift */,
 				AE1A6C0A271481CD000AAC3B /* SceneDelegate.swift */,
@@ -161,6 +164,7 @@
 				AE1A6C13271481CD000AAC3B /* Z0Memo.xcdatamodeld in Sources */,
 				AE1A6C2127148A34000AAC3B /* Memo.swift in Sources */,
 				AE1A6C2327148C8C000AAC3B /* MemoListTableViewController.swift in Sources */,
+				AE2A6EF227166AF600944473 /* ComposeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
