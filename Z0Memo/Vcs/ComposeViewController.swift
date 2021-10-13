@@ -20,8 +20,10 @@ class ComposeViewController: UIViewController {
             return
         } // textview에 메모가 입력되어 있지 않으면 extension으로 추가한 alert 메소드를 실행시켜 경고 메시지를 화면에 출력 시킨다.
         // 만약 textview에 메시지가 입력되어 있으면 아래 문장들을 실행한다.
-        let newMemo = Memo(content: memo) //새로운 Memo(model) 객체를 만들고
-        Memo.dummyMemoList.append(newMemo) //Tableview에 각 cell로 표현되는 MemoList에 추가하고 dismiss한다.
+        //let newMemo = Memo(content: memo) //새로운 Memo(model) 객체를 만들고
+        //Memo.dummyMemoList.append(newMemo) //Tableview에 각 cell로 표현되는 MemoList에 추가하고 dismiss한다.
+        
+        DataManager.shared.addNewMemo(memo)
         
         NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)// 등록된 observer 객체들에게 동시에! Notification을 전달하는 클래스이다.
         //Notification 을 전달한 obverser 를 처리할 때까지 대기 (동기적)

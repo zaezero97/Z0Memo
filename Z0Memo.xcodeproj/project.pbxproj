@@ -14,11 +14,11 @@
 		AE1A6C13271481CD000AAC3B /* Z0Memo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE1A6C11271481CD000AAC3B /* Z0Memo.xcdatamodeld */; };
 		AE1A6C15271481CE000AAC3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1A6C14271481CE000AAC3B /* Assets.xcassets */; };
 		AE1A6C18271481CE000AAC3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1A6C16271481CE000AAC3B /* LaunchScreen.storyboard */; };
-		AE1A6C2127148A34000AAC3B /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A6C2027148A34000AAC3B /* Memo.swift */; };
 		AE1A6C2327148C8C000AAC3B /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */; };
 		AE2A6EF227166AF600944473 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2A6EF127166AF600944473 /* ComposeViewController.swift */; };
 		AE2A6EF427166F4C00944473 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2A6EF327166F4C00944473 /* UIViewController+Alert.swift */; };
 		AE2A6EF62716956200944473 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2A6EF52716956200944473 /* DetailViewController.swift */; };
+		AE2A6EFE2716B06D00944473 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2A6EFD2716B06D00944473 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +31,11 @@
 		AE1A6C14271481CE000AAC3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE1A6C17271481CE000AAC3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE1A6C19271481CE000AAC3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE1A6C2027148A34000AAC3B /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		AE2A6EF127166AF600944473 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		AE2A6EF327166F4C00944473 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		AE2A6EF52716956200944473 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AE2A6EFD2716B06D00944473 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +52,6 @@
 		AE1A6BFC271481CD000AAC3B = {
 			isa = PBXGroup;
 			children = (
-				AE2A6EF72716958E00944473 /* Vcs */,
 				AE1A6C07271481CD000AAC3B /* Z0Memo */,
 				AE1A6C06271481CD000AAC3B /* Products */,
 			);
@@ -69,6 +68,8 @@
 		AE1A6C07271481CD000AAC3B /* Z0Memo */ = {
 			isa = PBXGroup;
 			children = (
+				AE2A6EF8271695A100944473 /* Extensions */,
+				AE2A6EF72716958E00944473 /* Vcs */,
 				AE1A6C1F27148A10000AAC3B /* Model */,
 				AE1A6C08271481CD000AAC3B /* AppDelegate.swift */,
 				AE1A6C0A271481CD000AAC3B /* SceneDelegate.swift */,
@@ -78,6 +79,7 @@
 				AE1A6C16271481CE000AAC3B /* LaunchScreen.storyboard */,
 				AE1A6C19271481CE000AAC3B /* Info.plist */,
 				AE1A6C11271481CD000AAC3B /* Z0Memo.xcdatamodeld */,
+				AE2A6EFD2716B06D00944473 /* DataManager.swift */,
 			);
 			path = Z0Memo;
 			sourceTree = "<group>";
@@ -85,7 +87,6 @@
 		AE1A6C1F27148A10000AAC3B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AE1A6C2027148A34000AAC3B /* Memo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -96,7 +97,6 @@
 				AE2A6EF52716956200944473 /* DetailViewController.swift */,
 				AE2A6EF127166AF600944473 /* ComposeViewController.swift */,
 				AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */,
-				AE2A6EF8271695A100944473 /* Extensions */,
 			);
 			path = Vcs;
 			sourceTree = "<group>";
@@ -185,9 +185,9 @@
 				AE1A6C09271481CD000AAC3B /* AppDelegate.swift in Sources */,
 				AE1A6C0B271481CD000AAC3B /* SceneDelegate.swift in Sources */,
 				AE1A6C13271481CD000AAC3B /* Z0Memo.xcdatamodeld in Sources */,
-				AE1A6C2127148A34000AAC3B /* Memo.swift in Sources */,
 				AE1A6C2327148C8C000AAC3B /* MemoListTableViewController.swift in Sources */,
 				AE2A6EF227166AF600944473 /* ComposeViewController.swift in Sources */,
+				AE2A6EFE2716B06D00944473 /* DataManager.swift in Sources */,
 				AE2A6EF427166F4C00944473 /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
