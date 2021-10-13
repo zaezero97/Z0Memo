@@ -41,6 +41,17 @@ class ComposeViewController: UIViewController {
         dismiss(animated:true, completion: nil)
     }
   
+    var willShowToken : NSObjectProtocol?
+    var willHideToken : NSObjectProtocol?
+    
+    deinit {
+        if let token = willShowToken{
+            NotificationCenter.default.removeObserver(token)
+        }
+        if let token = willHideToken{
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,15 +67,50 @@ class ComposeViewController: UIViewController {
         //따라서 nil이 아니면 네비게이션 아이템의 타이플을 바까주고 textview의 text를 세팅해준다.
         
         memoTextView.delegate = self
+        
+        willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            guard let strongSelf = self else {return}
+            print(noti)
+            if let frame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+                let height = frame.cgRectValue.height
+                
+                var inset = strongSelf.memoTextView.contentInset
+                inset.bottom = height
+                strongSelf.memoTextView.contentInset = inset
+                
+                inset = strongSelf.memoTextView.scrollIndicatorInsets
+                inset.bottom = height
+                strongSelf.memoTextView.scrollIndicatorInsets = inset
+            }
+        }) //keyboard Notification notification 구조체 안에 userinfo 에 키보드 높이에 관환 정보가 담겨져 있다.
+        // 정보를 가지고 contentInset(padding)으로 content의 bottom에서 높이 만큼 inset 값을 주면 된다.
+        
+        willHideToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            guard let strongSelf = self else {return}
+            if let frame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+                let height = frame.cgRectValue.height
+                
+                var inset = strongSelf.memoTextView.contentInset
+                inset.bottom = 0
+                strongSelf.memoTextView.contentInset = inset
+                
+                inset = strongSelf.memoTextView.scrollIndicatorInsets
+                inset.bottom = 0
+                strongSelf.memoTextView.scrollIndicatorInsets = inset
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        memoTextView.becomeFirstResponder()
         navigationController?.presentationController?.delegate = self
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        memoTextView.resignFirstResponder()
         navigationController?.presentationController?.delegate = nil
     }
    
