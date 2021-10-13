@@ -73,3 +73,17 @@ class MemoListTableViewController: UITableViewController {
     
 
 }
+
+
+extension MemoListTableViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UITableViewCell , let indexPath = tableView.indexPath(for: cell)
+        {
+            let vc = segue.destination as? DetailViewController
+            vc?.memo = Memo.dummyMemoList[indexPath.row]
+        }
+    }
+} // segue 를 통해 화면 전환이 이루어지기 전에 prepare함수가 호출된다 sender는 segue객체를 만드는 대상 즉 화면전환을 발생시키는 객체이다
+//segue는 전환 될 view controller를 생성하고 출발지과 도착지를 저장하고 있다.
+// 출발지 - segue.source , 도착지 - segue.destination
+//segue.destination은  UIViewController 이기때문에 다운캐스팅을 통해 DetailViewController로 변경해주고 데이터를 전달 하였다.
