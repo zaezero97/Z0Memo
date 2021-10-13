@@ -17,6 +17,7 @@
 		AE1A6C2127148A34000AAC3B /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A6C2027148A34000AAC3B /* Memo.swift */; };
 		AE1A6C2327148C8C000AAC3B /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */; };
 		AE2A6EF227166AF600944473 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2A6EF127166AF600944473 /* ComposeViewController.swift */; };
+		AE2A6EF427166F4C00944473 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2A6EF327166F4C00944473 /* UIViewController+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AE1A6C2027148A34000AAC3B /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		AE1A6C2227148C8C000AAC3B /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		AE2A6EF127166AF600944473 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		AE2A6EF327166F4C00944473 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				AE1A6C16271481CE000AAC3B /* LaunchScreen.storyboard */,
 				AE1A6C19271481CE000AAC3B /* Info.plist */,
 				AE1A6C11271481CD000AAC3B /* Z0Memo.xcdatamodeld */,
+				AE2A6EF327166F4C00944473 /* UIViewController+Alert.swift */,
 			);
 			path = Z0Memo;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				AE1A6C2127148A34000AAC3B /* Memo.swift in Sources */,
 				AE1A6C2327148C8C000AAC3B /* MemoListTableViewController.swift in Sources */,
 				AE2A6EF227166AF600944473 /* ComposeViewController.swift in Sources */,
+				AE2A6EF427166F4C00944473 /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

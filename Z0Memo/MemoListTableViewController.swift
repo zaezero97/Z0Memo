@@ -15,9 +15,36 @@ class MemoListTableViewController: UITableViewController {
         f.locale = Locale(identifier: "Ko_kr") // xcode가 기본적으로 생성한 프로젝트는 다국어를 지원하지 않아 영어로 표시된다. 따라서 한국 날짜로 표현하고 싶으면 이렇게 지정한다.
         return f
     }() // DateFormatter 객체를 클로저로 초기화
-    override func viewDidLoad() {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData() // 프레젠테이션 스타일이 full screen이면 save버튼을 클릭하여 dismiss 후에 해당 vc로 돌아오면 ViewWillAppear함수가 호출되고 여기서 reloadData함수를 호출하여 새로운 데이터로 기존 테이블을 다시 reload한다.
+        print(#function) // ios 13부터 modal의 프레젠테이션 스타일 기본값이 sheet가 그전에는 full screen
+        // 스타일이 sheet 일때는 dismiss로 해당 View Controller로 돌아와도 viewWillAppear 함수가 호출이 되지 않는다.
+        // 따라서 이 앱에서는 Notification을 통해서 save 기능 을 구현한다.
+    }
+    var token : NSObjectProtocol?
+    
+    deinit{
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    override func viewDidLoad(){
+        
         super.viewDidLoad()
-
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.newMemoDidInsert, object: nil, queue: OperationQueue.main)
+        {
+            [weak self] (noti) in // 클로저 안에서 self를 캡쳐하기 때문에 weak self 선언 순환참조로 인한 메모리 누수 방지
+            self?.tableView.reloadData()
+        }
+        // Notification을 받을 Observer 를 등록
+        // forName : 해당 Notification.Name 의 메시지를 받는다는 의미
+        // object : 특정 sender에게 수신 받을 때 sender입력
+        // queue: 쓰레드를 지정 여기서는 ui를 설정하기 떄문에 무조건 main쓰레드에서 헤야한다.
+        // addObserver함수 반환값으로 옵저버를 해제할 때 사용하는 토큰을 리턴해줌
+        // 메모리가 낭비되는 걸 방지하기 위해 뷰가 사라지거나 소멸 하기 전에 해제 시켜줘야한다.
     }
 
     // MARK: - Table view data source
