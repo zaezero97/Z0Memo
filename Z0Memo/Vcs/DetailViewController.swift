@@ -34,10 +34,24 @@ class DetailViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: ComposeViewController.MemoDidEdit, object: nil, queue: OperationQueue.main) {
             [weak self] Notification in
             self?.detailTableView.reloadData()
+            
         }
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func deleteMemo(_ sender: Any) {
+        let alert = UIAlertController(title: "삭제 확인", message: "삭제를 정말로 하시겠습니까?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "삭제", style: .destructive) {
+            [weak self](action) in
+            DataManager.shared.deleteMemo(self?.memo)
+            self?.navigationController?.popViewController(animated: true) //push -> pop , present -> dismiss
+        }
+        let cancleAction = UIAlertAction(title: "취소", style: .cancel,handler: nil)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancleAction)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension DetailViewController : UITableViewDataSource{
@@ -74,6 +88,4 @@ extension DetailViewController{
         
     }
 }
-
-
 

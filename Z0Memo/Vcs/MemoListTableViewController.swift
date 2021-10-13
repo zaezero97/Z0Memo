@@ -72,7 +72,20 @@ class MemoListTableViewController: UITableViewController {
         return cell
     }
     
-
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }//편집 기능 활성화
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }//원하는 editing sytle 을 return , 삭제 기능을 구현하기 위해 delete 리턴
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let target = DataManager.shared.memoList[indexPath.row]
+            DataManager.shared.deleteMemo(target)
+            DataManager.shared.memoList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } //memoList에서 데이터삭제안할시에 tableview.deleteRows 후에 배열의 데이터 수와 cell의 숫자가 일치하지 않아 에러가 발생한다.
+    }
 }
 
 

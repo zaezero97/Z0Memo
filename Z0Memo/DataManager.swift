@@ -45,6 +45,13 @@ class DataManager
         memoList.insert(newMemo, at: 0) //바로 배열에 저장하는 이유는 저장할 때마다 fetch를 통해 값을 가져오고 그것을 통해 table을 reload시키는 것 보다 필요할 때만 fetch하고 아닌 경우에는 바로 배열에다가 저장하고 reload하는 것이 더 효율 적이다.
         saveContext() // core data에 저장
     }
+    
+    func deleteMemo(_ memo: Memo?){
+        if let memo = memo {
+            mainContext.delete(memo)
+            saveContext()
+        }
+    }
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "Z0Memo")

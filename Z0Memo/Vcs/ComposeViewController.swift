@@ -67,15 +67,7 @@ class ComposeViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.presentationController?.delegate = nil
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func pr epare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }
 
@@ -87,7 +79,6 @@ extension ComposeViewController{
 // 다른 view controller 에서 공용으로 접근하기 때문에 static를 사용한 거 같다.
 // static으로 선언하지 않으면 ComposeViewController 객체를 선언하고 해당 인스턴스에서 프로퍼티를 초기화해서 사용하면 인스턴스마다 Notification.Name이 달라 질 수도 있다.
 // 마지막으로 정리하자면 특정 타입의 모든 인스턴스에서 공용으로 사용될 프로퍼티를 타입 프로퍼티로 선언한다.
-
 
 
 
